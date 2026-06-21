@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BookStep - 홈</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#cfe6f2",
+                    "outline-variant": "#c1c7d3",
+                    "on-tertiary-fixed-variant": "#1a4e50",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#ffb955",
+                    "background": "#f3faff",
+                    "status-loaned": "#E57373",
+                    "on-background": "#071e27",
+                    "primary-fixed": "#d4e3ff",
+                    "inverse-surface": "#1e333c",
+                    "surface-bright": "#f3faff",
+                    "surface-container-low": "#e6f6ff",
+                    "warm-orange": "#F5A623",
+                    "tertiary-container": "#4c7c7f",
+                    "status-available": "#4CAF50",
+                    "outline": "#717783",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#9ecfd1",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#b9ecee",
+                    "on-secondary-container": "#6b4500",
+                    "surface-container": "#dbf1fe",
+                    "on-surface-variant": "#414751",
+                    "on-surface": "#071e27",
+                    "inverse-primary": "#a4c9ff",
+                    "primary-container": "#2976c7",
+                    "tertiary": "#336366",
+                    "on-secondary-fixed": "#291800",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-soft": "#F4F7FB",
+                    "on-primary-container": "#fdfcff",
+                    "secondary-container": "#feae2c",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001c39",
+                    "surface-dim": "#c7dde9",
+                    "surface": "#f3faff",
+                    "step-blue": "#4A90E2",
+                    "on-tertiary-fixed": "#002021",
+                    "surface-tint": "#0060ac",
+                    "secondary-fixed": "#ffddb4",
+                    "secondary": "#835500",
+                    "on-tertiary-container": "#f2ffff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#005da7",
+                    "on-primary": "#ffffff",
+                    "background-cream": "#FDFCF0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "16px",
+                    "xl": "24px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "stack-md": "1.5rem",
+                    "base": "8px",
+                    "container-padding-desktop": "2.5rem",
+                    "container-padding-mobile": "1.25rem",
+                    "stack-lg": "2.5rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .book-card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 93, 167, 0.1), 0 8px 10px -6px rgba(0, 93, 167, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-16 w-full shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">menu_book</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">BookStep</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">
+                JD
+            </div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-6 space-y-stack-lg">
+<!-- Greeting & Search -->
+<section class="space-y-stack-md">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">안녕하세요, 북스텝러님! 👋</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">오늘의 새로운 이야기를 찾아보세요!</p>
+</div>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-surface-soft shadow-sm ring-1 ring-inset ring-transparent focus:ring-2 focus:ring-primary transition-all text-body-md font-body-md" placeholder="책 제목, 저자, 장르를 검색해 보세요..." type="text"/>
+</div>
+</section>
+<!-- Custom Recommendations -->
+<section class="space-y-stack-sm">
+<div class="flex justify-between items-end">
+<h3 class="font-headline-md text-headline-md text-on-surface">회원님을 위한 맞춤 추천</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">전체보기</button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 pt-2 -mx-container-padding-mobile px-container-padding-mobile md:mx-0 md:px-0 hide-scrollbar">
+<!-- Book Card 1 -->
+<div class="flex-shrink-0 w-44 space-y-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A stylized book cover illustration for a sci-fi novel titled Neon Horizon. The artwork features vibrant cyberpunk aesthetics with neon pink and electric blue colors, a futuristic city silhouette, and a glowing digital eye. The style is modern, energetic, and high-contrast, fitting for a teenage audience looking for excitement and mystery in the Step Blue brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYOVVDgx8owglezBcSDQ9DgaeeFlpjage2H3EZIFsY-lbUhW-BmlpjsS9mNnAxhjA9JoOOaIsWJGt_HJknzxQzMvCiRQBnmDcnaRK5fQYKMx_wE5lfe5_l-NIDxHzu0tOpw3QG-NWLkr4NW34nWprelgRSeQ9rO46OP9Llu9yBG5CeGBWN0ZvR7vhlBXLHhaemHJuF2wwu3jDHnzriGcLQiGaXrX4IcTQR4kpz1X-fju3Qos0EwJ1xp8P8oEDKaux0u6Z2hNL-sRw"/>
+<span class="absolute top-2 right-2 px-2 py-1 rounded-full bg-status-available/90 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">대출 가능</span>
+</div>
+<div class="px-1">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">네온 호라이즌</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">S.K. 리버스</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary text-[11px] font-label-sm">SF</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">네온 불빛 도시에서 펼쳐지는 청소년 SF 모험.</p>
+</div>
+</div>
+<!-- Book Card 2 -->
+<div class="flex-shrink-0 w-44 space-y-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A warm and inviting book cover for a coming-of-age story titled Summer at the Creek. The illustration uses an organic, painterly style with warm orange and sun-drenched yellows. It depicts two teenagers sitting on a wooden dock by a sparkling blue river, surrounded by lush green trees. The mood is nostalgic, friendly, and cozy, reflecting a warm minimalism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvYEtaa6zsc9iws7-RD8SBa_CCkKWAhW1qGSIDfpBbCFUEgf0r67-eSv0aY7O2-xqMjwmUhrG2vVHwsoXD4YAIplD5uFZN5G2F37vVAmHkmQuOE2ZG_ZIEQIOhD5V0jn4WrH0V5sscUWsKeIhW6IUNP0lDS3HttoeoGpQIIy9kc-LfTlorvg4-JCtKKlcYSsJsN9Y3MXScK-QF3ylMJQHkVkl7r3Shhc6Yi7HhprVcpCBMu6qbRtnGWMgGsopKMc9D-NB6N-AAQ1o"/>
+<span class="absolute top-2 right-2 px-2 py-1 rounded-full bg-status-available/90 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">대출 가능</span>
+</div>
+<div class="px-1">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">개울가의 여름</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">엘레나 모스</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary text-[11px] font-label-sm">청소년문학</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">여름방학, 개울가에서 만난 친구들의 성장 이야기.</p>
+</div>
+</div>
+<!-- Book Card 3 -->
+<div class="flex-shrink-0 w-44 space-y-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A dark and mysterious fantasy book cover titled The Iron Crown. The design features a heavy metallic crown entwined with thorny black vines against a deep slate blue background. Silver leaf textures and subtle glowing particles add a touch of magic. The lighting is dramatic and low-key, emphasizing depth and tactile details in a professional digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKBn8zOqymyPpOBejoBfRhJMRjgJ1lQkNUJ18on-cTKdjEG08MsfAqVjqNODRs0UoCenl9cF_coKlvTtLdlfbIkj254uBSIE_qyXc45atPE7mQNI9LTEKVm2a4uIgSvs9GLCfqSrHyDMLzX2nVcmbucGsvaXlrk-HoPBR1am8vXzANBWDvgv5DGbbFN1_5MpfKevIw2cbyuoMVM5gqQed9CTwID_irlqD2AnxQLXUve1h39ZVhwrX9YmEFoTlx1kSGox2KGtdP8b4"/>
+<span class="absolute top-2 right-2 px-2 py-1 rounded-full bg-status-loaned/90 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">대출 중</span>
+</div>
+<div class="px-1">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">아이언 크라운</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">마커스 쏜</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary text-[11px] font-label-sm">판타지</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">왕관을 둘러싼 판타지 세계의 음모와 모험.</p>
+</div>
+</div>
+<!-- Book Card 4 -->
+<div class="flex-shrink-0 w-44 space-y-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+<div class="relative aspect-[2/3] w-full rounded-lg overflow-hidden book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A bright and energetic sports-themed book cover titled Breaking Point. The visual features a dynamic, blurred motion shot of a basketball player mid-dunk, rendered in a graphic, high-energy vector style. The color palette uses Step Blue and Warm Orange accents against a crisp white background. It feels athletic, modern, and inspiring for a young adult reader." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5n8iaaIWvgo7GBXlIEBT6IaHcrP2fBhWZrM9uPI9qi8yaM_95ITE8pNjbOMmTCWl3tpnO9cmFLhw4NwNL1gLaNgR9R-zcDUZlwmOKD5tIYX5dWKQdmEhRSDKHdulHzLju1zLf7aNytSxNJfXjW-v3EYBLUxRXuYJfCTFjNUpAdQv0394GaIH1wHKnsPM0c9QZ0Xadlys5QEkG8L76Fh_qQm-IQqSfdQrXHE2mrs-fKI4W2godzikqHsU9YV4eOvNL7Wa7IP3v2A"/>
+<span class="absolute top-2 right-2 px-2 py-1 rounded-full bg-status-available/90 text-[10px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">대출 가능</span>
+</div>
+<div class="px-1">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">브레이킹 포인트</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">조던 헤이즈</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary text-[11px] font-label-sm">청소년문학</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">농구 코트에서 꿈과 우정을 키우는 스포츠 소설.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Books (Bento/List Hybrid) -->
+<section class="space-y-stack-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">지금 뜨고 있는 도서</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Popular Item 1 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex gap-4 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A minimalist book cover titled Silent Echo. The design uses a soft blue and grey palette with a single white feather drifting through a foggy landscape. The aesthetic is clean, modern, and highly readable, focused on functional clarity and a serene, contemplative mood for a teen mystery novel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI2MsT59yYxL-q10YO2hh5V8IdfikQ1NgHYRX18Ivbp9n2OucEAbMuF9hT5HEXMbwLw8_qrbqo9z8UCTLdVtMkIetY_hvZd79d83sVCsgITePsP3aiULz9dNMPkSaOba0gTq6UT7oyD7tCO5e7DoRzvuUpKA_htLTGEbF8tXl34bLEVoK3mpfPr_mcvRTFPHWkAu_ZIpfFvFaQXjdufn9EKfHKPcYBjZQjRz6-jzsLaPsUn5VrkZlEu_W-HcU68OAw7sSznkecyfA"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">침묵의 메아리</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">사라 페너</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.8
+                            </span>
+<span class="text-on-surface-variant text-[12px] font-medium px-2 py-0.5 rounded-full bg-surface-container-highest">1.2k명이 읽음</span>
+</div>
+</div>
+<button class="self-center w-10 h-10 rounded-full flex items-center justify-center text-primary border border-primary hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Popular Item 2 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex gap-4 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A vibrant book cover for a graphic novel titled Pixel Heart. The style is inspired by 16-bit retro video games with bright, pixelated characters and heart icons. The background is a playful lavender color, and the title is in a bold, blocky font. The lighting is flat and cheerful, targeting a modern, tech-savvy teenage audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLk78AiK0mARoa1j5aVCmai3tDa1pyYVTXn1sS2NAlaJ7BVOxYoUhHBJL4WuaIShQFEGMqmQlgLwt8a7kB1jz45FE1AW949GdiEHswUf4MSqtoi27xnt2dWsTR8vtdTAOOut6PzFouKM2Oladtedax18QtxUniXj4wbyjWj3xJWyuNqxv6PqakbsCIAkbyy8sJNR6I8n6h-aUsuO5yul-8KZxes-fHshdHUKji2fYrhDbBjjup-e3kxjR0BQWOkW84mkibRJzB97M"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">픽셀 하트</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">데이비드 킴</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9
+                            </span>
+<span class="text-on-surface-variant text-[12px] font-medium px-2 py-0.5 rounded-full bg-surface-container-highest">940명이 읽음</span>
+</div>
+</div>
+<button class="self-center w-10 h-10 rounded-full flex items-center justify-center text-primary border border-primary hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Popular Item 3 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex gap-4 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A sophisticated book cover titled The Glass Lab. The artwork shows a detailed, glowing laboratory flask filled with a swirling blue galaxy. The background is a clean, dark navy. The style is high-end digital illustration with glossy reflections and intricate light effects, suggesting a deep-dive into science fiction and discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5yslSl3ui2k3IzXjDovsweS5xiFmxtby8AR65twR6n3oEA4AsaoDOgeLP7bgEHCtUezHcAnlDyZVKeaq0FVcymGNnoo3EMo2GqWf-T04KVTxfUMNgZ3MlewcNpcuqGTm-GxWR3Hx-f_qc1ZRVzI5D74EX7q897Hpy3PB17vbVEbRFERWgZweb8PN9fNx3-SD4J5_cbbLtwLeiZ7Z2uz-xvaL0Wak_y-Bim9llzLyo8S99Hg8_5Qp6P8BzY27ngj6MjNWEyMBgB4c"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">유리 실험실</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">닥터 아리스 베인</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.7
+                            </span>
+<span class="text-on-surface-variant text-[12px] font-medium px-2 py-0.5 rounded-full bg-surface-container-highest">850명이 읽음</span>
+</div>
+</div>
+<button class="self-center w-10 h-10 rounded-full flex items-center justify-center text-primary border border-primary hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Popular Item 4 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex gap-4 hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-shrink-0 book-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A cozy, atmospheric book cover titled Midnight Tales. The scene shows a small wooden cabin with glowing windows under a vast, starry night sky. The colors are deep indigo and soft warm yellow. The illustrative style is organic and comforting, with textured brushstrokes that feel hand-crafted and inviting, echoing the brand's cozy reading nook philosophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCBTIR6aV_dbf9tywbI8XAAz9E2np_RmdXUEy9TfqcUOyOIcxS6Tz3PlsXJVhXfvRMnvZlujNgU_kcAhVDmIIsKKidBlcgQwddPqO5VLs0BOO7yTszRKAU3-aAdrIWOwqZat5NI4RohtozfjwiAag6UB37dlrkL2MBQ1Rybh7MBtUQBYUtdm-1kvLbuZVWYN0jPCPi4xyCCxBEKftIuoSGsEJ2pbZDt-A_GIB1LrY6peTcVrIfqzqurPZ-aYzqhbmyEIZiVJRgdL8"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-grow">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">한여름 밤의 이야기</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">L.J. 스미스</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.6
+                            </span>
+<span class="text-on-surface-variant text-[12px] font-medium px-2 py-0.5 rounded-full bg-surface-container-highest">720명이 읽음</span>
+</div>
+</div>
+<button class="self-center w-10 h-10 rounded-full flex items-center justify-center text-primary border border-primary hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative bg-primary-container rounded-xl p-8 overflow-hidden">
+<div class="relative z-10 space-y-4 max-w-sm">
+<h3 class="font-headline-lg-mobile text-on-primary-container leading-tight">여름 독서 챌린지에 참여하세요!</h3>
+<p class="font-body-sm text-on-primary-container/80">9월 전까지 5권의 책을 읽고 한정판 뱃지와 기프트 카드를 받으세요.</p>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-3 rounded-full font-label-md text-label-md shadow-lg active:scale-95 transition-transform">참여하기</button>
+</div>
+<!-- Abstract shapes for decoration -->
+<div class="absolute -right-8 -bottom-8 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute right-12 top-4 w-24 h-24 bg-surface-container-highest/30 rounded-full blur-2xl"></div>
+</section>
+</main>
+<!-- FAB for quick action (Optional based on design system but good for UX) -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-90 transition-all z-40 md:hidden">
+<span class="material-symbols-outlined">camera_enhance</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container dark:bg-surface-container-lowest rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="main-home.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="book-search.html">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">검색</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="bookmark.html">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-label-md">북마크</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="login.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">내 정보</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for search bar focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchIcon = document.querySelector('.group .material-symbols-outlined');
+        
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+
+        // Add a simple hover effect for cards if needed or manage tab states
+        const navItems = document.querySelectorAll('nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                navItems.forEach(nav => {
+                    nav.className = "flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150";
+                });
+                e.currentTarget.className = "flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-transform";
+            });
+        });
+    </script>
+</body></html>

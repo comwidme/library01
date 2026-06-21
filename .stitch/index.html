@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stepup도서관앱 — Stitch UI Preview</title>
+  <style>
+    :root {
+      --bg: #f3faff;
+      --surface: #fff;
+      --border: #c1c7d3;
+      --primary: #005da7;
+      --accent: #f5a623;
+      --text: #071e27;
+      --muted: #414751;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 2rem 1.5rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { margin: 0 0 0.25rem; font-size: 1.75rem; color: var(--primary); }
+    p { margin: 0; color: var(--muted); }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 390/844;
+      object-fit: cover;
+      object-position: top;
+      background: #e6f6ff;
+      border-bottom: 1px solid var(--border);
+    }
+    .placeholder {
+      aspect-ratio: 390/844;
+      display: grid;
+      place-items: center;
+      background: #e6f6ff;
+      color: var(--muted);
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-body {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .card h2 { margin: 0; font-size: 1rem; }
+    .meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+    a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      background: #fff;
+    }
+    a.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .note {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Stepup도서관앱</h1>
+    <p>Stitch UI 시안 · BookStep PRD 기반 (시각 참고용)</p>
+  </header>
+  <main>
+    <article class="card">
+      <img src="preview/signup.png" alt="회원가입">
+      <div class="card-body">
+        <div class="meta">AUTH</div>
+        <h2>회원가입 (국문)</h2>
+        <div class="links"><a class="primary" href="screens/signup.html">HTML 열기</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="placeholder">미리보기 없음</div>
+      <div class="card-body">
+        <div class="meta">AUTH</div>
+        <h2>로그인 (국문)</h2>
+        <div class="links"><a class="primary" href="screens/login.html">HTML 열기</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="preview/main-home.png" alt="메인 홈">
+      <div class="card-body">
+        <div class="meta">HOME</div>
+        <h2>메인 홈 (국문)</h2>
+        <div class="links"><a class="primary" href="screens/main-home.html">HTML 열기</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="preview/book-search.png" alt="도서 검색">
+      <div class="card-body">
+        <div class="meta">SEARCH</div>
+        <h2>도서 검색 - 한국어 전용</h2>
+        <div class="links"><a class="primary" href="screens/book-search.html">HTML 열기</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="preview/book-detail.png" alt="도서 상세">
+      <div class="card-body">
+        <div class="meta">DETAIL</div>
+        <h2>도서 상세 - 한국어</h2>
+        <div class="links"><a class="primary" href="screens/book-detail.html">HTML 열기</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="preview/bookmark.png" alt="북마크">
+      <div class="card-body">
+        <div class="meta">BOOKMARK</div>
+        <h2>북마크 (국문)</h2>
+        <div class="links"><a class="primary" href="screens/bookmark.html">HTML 열기</a></div>
+      </div>
+    </article>
+  </main>
+  <p class="note">
+    구현 기준 문서: <code>docs/BookStep_PRD.md</code> · 디자인 토큰: <code>.stitch/DESIGN.md</code>
+  </p>
+</body>
+</html>

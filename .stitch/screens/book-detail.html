@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/completion-modal.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#cfe6f2",
+                    "outline-variant": "#c1c7d3",
+                    "on-tertiary-fixed-variant": "#1a4e50",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#ffb955",
+                    "background": "#f3faff",
+                    "status-loaned": "#E57373",
+                    "on-background": "#071e27",
+                    "primary-fixed": "#d4e3ff",
+                    "inverse-surface": "#1e333c",
+                    "surface-bright": "#f3faff",
+                    "surface-container-low": "#e6f6ff",
+                    "warm-orange": "#F5A623",
+                    "tertiary-container": "#4c7c7f",
+                    "status-available": "#4CAF50",
+                    "outline": "#717783",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#9ecfd1",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#b9ecee",
+                    "on-secondary-container": "#6b4500",
+                    "surface-container": "#dbf1fe",
+                    "on-surface-variant": "#414751",
+                    "on-surface": "#071e27",
+                    "inverse-primary": "#a4c9ff",
+                    "primary-container": "#2976c7",
+                    "tertiary": "#336366",
+                    "on-secondary-fixed": "#291800",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-soft": "#F4F7FB",
+                    "on-primary-container": "#fdfcff",
+                    "secondary-container": "#feae2c",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001c39",
+                    "surface-dim": "#c7dde9",
+                    "surface": "#f3faff",
+                    "step-blue": "#4A90E2",
+                    "on-tertiary-fixed": "#002021",
+                    "surface-tint": "#0060ac",
+                    "secondary-fixed": "#ffddb4",
+                    "secondary": "#835500",
+                    "on-tertiary-container": "#f2ffff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#005da7",
+                    "on-primary": "#ffffff",
+                    "background-cream": "#FDFCF0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "stack-md": "1.5rem",
+                    "base": "8px",
+                    "container-padding-desktop": "2.5rem",
+                    "container-padding-mobile": "1.25rem",
+                    "stack-lg": "2.5rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Be Vietnam Pro", "sans-serif"],
+                    "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
+                    "body-md": ["Be Vietnam Pro", "sans-serif"],
+                    "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+                    "body-sm": ["Be Vietnam Pro", "sans-serif"],
+                    "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+                    "label-md": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-header {
+            background: rgba(243, 250, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .book-shadow {
+            box-shadow: 0 20px 40px -15px rgba(0, 93, 167, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+            word-break: keep-all;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed" data-book-status="available">
+<!-- Top Navigation Bar (Fixed) -->
+<header class="glass-header sticky top-0 z-50 flex justify-between items-center px-container-mobile md:px-container-desktop h-16 w-full shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low active:scale-90 transition-all duration-150" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">BookStep</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+</header>
+<main class="max-w-[1200px] mx-auto pb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 px-container-mobile md:px-container-desktop mt-stack-md">
+<!-- Book Cover Section -->
+<div class="md:col-span-5 lg:col-span-4 flex flex-col items-center">
+<div class="relative group w-full aspect-[2/3] max-w-[320px]">
+<div class="w-full h-full rounded-xl overflow-hidden book-shadow transform transition-transform duration-500 group-hover:scale-[1.02]">
+<img alt="천상의 문 도서 커버" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTnPH8YtHxY29T4c2K08C-xaTILKAv5LXWTXdwVjCZmDJq4hBLE7H8LZ_t3wiWSfGTuvnv9SyMDFimnelOI-s8F2cN_bQ-igpeD0cGz3j8aMUIF_mQWl90lYGnVhQ1hnr-KgBi4lEdURd1EIEYnKhmO00UlxV1_qgJbolaPDD3XuQODN4gvDRi9AiO3-2MDGAgKUoroinXf4mFvAWGk9NECZLTOykYPA09IrB8Rismkolbm6yjkwo5BGdBa-pcp71P9hHHUDzQGcg"/>
+</div>
+<!-- Status Badge -->
+<div class="absolute top-4 right-4 bg-status-available text-white px-4 py-1.5 rounded-full font-label-md text-label-md shadow-lg flex items-center gap-1.5" id="statusBadge">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    대출 가능
+                </div>
+</div>
+</div>
+<!-- Content Details Section -->
+<div class="md:col-span-7 lg:col-span-8 flex flex-col space-y-stack-md">
+<!-- Title & Basic Info -->
+<div class="space-y-2">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">천상의 문</h1>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+<p class="font-body-lg text-text-body-lg text-primary font-semibold">엘레나 밴스</p>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant hidden sm:block"></span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-label-md text-label-md">2023년 발행</span>
+</div>
+</div>
+</div>
+<!-- Genre Chips -->
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-primary font-label-md text-label-md">판타지</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-primary font-label-md text-label-md">청소년문학</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-primary font-label-md text-label-md">모험</span>
+<div class="flex items-center gap-1 ml-auto text-warm-orange">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-md">4.8</span>
+</div>
+</div>
+<!-- Bento Info Grid -->
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="bg-surface-soft p-4 rounded-xl flex flex-col items-center justify-center text-center space-y-1">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">페이지</span>
+<span class="font-headline-md text-headline-md text-on-surface">432</span>
+</div>
+<div class="bg-surface-soft p-4 rounded-xl flex flex-col items-center justify-center text-center space-y-1">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">언어</span>
+<span class="font-headline-md text-headline-md text-on-surface">한국어</span>
+</div>
+<div class="bg-surface-soft p-4 rounded-xl flex flex-col items-center justify-center text-center space-y-1 col-span-2 lg:col-span-1">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">예상 독서 시간</span>
+<span class="font-headline-md text-headline-md text-on-surface">약 7시간</span>
+</div>
+</div>
+<!-- Summary Section -->
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">줄거리</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    문학이 말 그대로 다른 차원으로 통하는 관문이 되는 세상에서, 17세 소녀 라이라는 학교 금서 구역 마룻바닥 아래 숨겨진 잊힌 원고를 발견합니다. 그녀가 첫 문장을 읽어 내려가는 순간, 주변의 벽들이 일렁이기 시작하며 허구와 현실의 경계가 무너지기 시작합니다.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    "천상의 문"은 상상력의 가장 먼 곳을 향하는 숨 막히는 여정으로 독자들을 초대합니다. 용기, 언어의 힘, 그리고 서로 다른 세계를 잇는 유대라는 주제를 탐구하는 엘레나 밴스의 이 걸작은 세상의 모든 애서가들에게 바치는 연서와도 같습니다.
+                </p>
+</div>
+<!-- Recommendation Preview -->
+<div class="pt-4 border-t border-surface-container">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">추천 도서</h3>
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+<div class="flex-shrink-0 w-24 aspect-[2/3] bg-surface-variant rounded-lg overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<img alt="추천 도서 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXyEtc7UJowoEoCSLh0eMLIl7OG9nkTizInuXsfQYyXFc_jWeGJBCweQuN1acOlyZjVUOy8H_T_p9wF7HDjupGAqfqjAwNoclmbNY0Tjr7i7cg_hXa7SeWEII1zW6dzyMgALFr63WKzMzGE6-AxRigLv0lxBt_DSQm-NTh0RJYUi02JWB5UV-B3ZgntNCRPvbjFQiQuPS2Yyk9rljKTC4Oo8hznbEpxjEHiS1x5IIPMevKqAqU3rTKyRegGZrgrurIEsVTZKSVWY"/>
+</div>
+<div class="flex-shrink-0 w-24 aspect-[2/3] bg-surface-variant rounded-lg overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<img alt="추천 도서 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwBPcmdEDAIghib5tB8Ea7eW-z8D7FgoZCP-Fpj7hjvRqFYOLit6QBHIpVPXff2LSw8lPDoLsVJlpuPPXrxmDHxSY0MRxUEXquTL8G9YLtQiDxaPXBXfn5vnjnmLyX88xgPCdxJVVLyMHO3BjUBFSv__sqyR986KnEHJAkTiT4LVHiQGFutODEC8lJAJY53ln8WhUVzyyeZJNHngPoTQwpo8Y-ZA3PWYZpPTK_YIFJdgKpq50xei_R3OkvhigC9kspsH_dDcX6aqQ"/>
+</div>
+<div class="flex-shrink-0 w-24 aspect-[2/3] bg-surface-variant rounded-lg overflow-hidden transition-transform active:scale-95 cursor-pointer">
+<img alt="추천 도서 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALCOGjTrutFj7e_5RFH2iOR-_zdXu601khREUKtRoIgpiN68CMgF16TQ-nfQMQ8ve6lndNXJ-vddWQUCvQ8UzeuMnz_YfSmxD-mYor11SaheYS5SutpEmCKumT-mDCXSq2W-rAyqOiDuBA6T7ryYqEsJozMmSN8YbcuvIwjDV8wQh97GLuvK2M-k_eAbI3QPifOrJHo6UM0RwxCLPwYrSabyMQxGB8okxw4LUhZN18Xjq2XbH2O8G1TP-xp6qPvTflckDmV3relLg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Action Bar at Bottom -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container dark:bg-surface-container-lowest border-t-0 shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.1)] px-container-mobile md:px-container-desktop h-24 flex items-center z-50 rounded-t-xl">
+<div class="max-w-[1200px] mx-auto w-full flex items-center gap-4">
+<!-- Bookmark Button -->
+<button class="w-14 h-14 flex flex-shrink-0 items-center justify-center rounded-xl bg-surface-container-high text-warm-orange border border-warm-orange/20 hover:bg-surface-container-highest transition-colors active:scale-90" id="bookmarkBtn">
+<span class="material-symbols-outlined text-[28px]" id="bookmarkIcon">bookmark</span>
+</button>
+<!-- Loan Request Button -->
+<button class="flex-grow h-14 bg-primary text-white font-label-md text-label-md rounded-xl shadow-lg hover:bg-primary-container transition-all active:scale-[0.98] flex items-center justify-center gap-2" id="loanBtn">
+<span class="material-symbols-outlined">menu_book</span>
+            대출 신청
+        </button>
+<!-- Reserve Button -->
+<button class="hidden flex-grow h-14 bg-warm-orange text-white font-label-md text-label-md rounded-xl shadow-lg hover:opacity-90 transition-all active:scale-[0.98] flex items-center justify-center gap-2" id="reserveBtn">
+<span class="material-symbols-outlined">event_available</span>
+            예약 신청
+        </button>
+</div>
+</footer>
+<div class="hidden" id="completion-modal" role="dialog" aria-modal="true" aria-labelledby="completion-modal-title">
+<div class="modal-panel">
+<div class="modal-icon"><span class="material-symbols-outlined text-[28px]" id="completion-modal-icon">check_circle</span></div>
+<h2 class="modal-title" id="completion-modal-title">완료</h2>
+<p class="modal-message" id="completion-modal-message"></p>
+<button type="button" id="completion-modal-close">확인</button>
+</div>
+</div>
+<script src="../shared/completion-modal.js"></script>
+<!-- Micro-interactions Script -->
+<script>
+    const applyBookStatus = (status) => {
+        const badge = document.getElementById('statusBadge');
+        const loanBtn = document.getElementById('loanBtn');
+        const reserveBtn = document.getElementById('reserveBtn');
+        document.body.dataset.bookStatus = status;
+
+        if (status === 'loaned') {
+            badge.className = 'absolute top-4 right-4 bg-status-loaned text-white px-4 py-1.5 rounded-full font-label-md text-label-md shadow-lg flex items-center gap-1.5';
+            badge.innerHTML = '<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: \'FILL\' 1;">schedule</span>대출 중';
+            loanBtn.classList.add('hidden');
+            reserveBtn.classList.remove('hidden');
+            return;
+        }
+
+        badge.className = 'absolute top-4 right-4 bg-status-available text-white px-4 py-1.5 rounded-full font-label-md text-label-md shadow-lg flex items-center gap-1.5';
+        badge.innerHTML = '<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: \'FILL\' 1;">check_circle</span>대출 가능';
+        loanBtn.classList.remove('hidden');
+        reserveBtn.classList.add('hidden');
+    };
+
+    applyBookStatus(new URLSearchParams(window.location.search).get('status') === 'loaned' ? 'loaned' : 'available');
+    // Bookmark toggle interaction
+    const bookmarkBtn = document.getElementById('bookmarkBtn');
+    const bookmarkIcon = document.getElementById('bookmarkIcon');
+    let isBookmarked = false;
+
+    bookmarkBtn.addEventListener('click', () => {
+        isBookmarked = !isBookmarked;
+        if (isBookmarked) {
+            bookmarkIcon.style.fontVariationSettings = "'FILL' 1";
+            bookmarkBtn.classList.add('bg-warm-orange');
+            bookmarkBtn.classList.remove('bg-surface-container-high', 'text-warm-orange');
+            bookmarkBtn.classList.add('text-white');
+            showCompletionModal('bookmark');
+        } else {
+            bookmarkIcon.style.fontVariationSettings = "'FILL' 0";
+            bookmarkBtn.classList.remove('bg-warm-orange', 'text-white');
+            bookmarkBtn.classList.add('bg-surface-container-high', 'text-warm-orange');
+        }
+    });
+
+    const loanBtn = document.getElementById('loanBtn');
+    loanBtn.addEventListener('click', () => showCompletionModal('loan'));
+
+    const reserveBtn = document.getElementById('reserveBtn');
+    reserveBtn.addEventListener('click', () => showCompletionModal('reserve'));
+</script>
+</body></html>

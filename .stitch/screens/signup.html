@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BookStep 가입하기 - 여정을 시작하세요</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/completion-modal.css" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#cfe6f2",
+                    "outline-variant": "#c1c7d3",
+                    "on-tertiary-fixed-variant": "#1a4e50",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#ffb955",
+                    "background": "#f3faff",
+                    "status-loaned": "#E57373",
+                    "on-background": "#071e27",
+                    "primary-fixed": "#d4e3ff",
+                    "inverse-surface": "#1e333c",
+                    "surface-bright": "#f3faff",
+                    "surface-container-low": "#e6f6ff",
+                    "warm-orange": "#F5A623",
+                    "tertiary-container": "#4c7c7f",
+                    "status-available": "#4CAF50",
+                    "outline": "#717783",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#9ecfd1",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#b9ecee",
+                    "on-secondary-container": "#6b4500",
+                    "surface-container": "#dbf1fe",
+                    "on-surface-variant": "#414751",
+                    "on-surface": "#071e27",
+                    "inverse-primary": "#a4c9ff",
+                    "primary-container": "#2976c7",
+                    "tertiary": "#336366",
+                    "on-secondary-fixed": "#291800",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-soft": "#F4F7FB",
+                    "on-primary-container": "#fdfcff",
+                    "secondary-container": "#feae2c",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001c39",
+                    "surface-dim": "#c7dde9",
+                    "surface": "#f3faff",
+                    "step-blue": "#4A90E2",
+                    "on-tertiary-fixed": "#002021",
+                    "surface-tint": "#0060ac",
+                    "secondary-fixed": "#ffddb4",
+                    "secondary": "#835500",
+                    "on-tertiary-container": "#f2ffff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#005da7",
+                    "on-primary": "#ffffff",
+                    "background-cream": "#FDFCF0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "stack-md": "1.5rem",
+                    "base": "8px",
+                    "container-padding-desktop": "2.5rem",
+                    "container-padding-mobile": "1.25rem",
+                    "stack-lg": "2.5rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .genre-chip.active {
+            background-color: #feae2c; /* secondary-container */
+            color: #6b4500; /* on-secondary-container */
+            box-shadow: 0 4px 12px rgba(254, 174, 44, 0.3);
+        }
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+        .floating-blob {
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- Background Decorative Elements -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary rounded-full floating-blob animate-pulse"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-warm-orange rounded-full floating-blob" style="animation-duration: 8s; animation-iteration-count: infinite;"></div>
+<main class="container mx-auto min-h-screen flex items-center justify-center px-container-mobile py-stack-lg md:px-container-desktop">
+<!-- Registration Bento Container -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-6xl w-full items-stretch">
+<!-- Left Side: Welcome Branding (Desktop Only) -->
+<div class="hidden lg:flex lg:col-span-5 flex-col justify-between p-stack-lg bg-primary-container rounded-xl shadow-lg relative overflow-hidden text-on-primary-container">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-4xl">menu_book</span>
+<h1 class="font-headline-lg text-headline-lg tracking-tight">BookStep</h1>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-4">당신의 새로운 모험이 시작됩니다.</h2>
+<p class="font-body-lg text-body-lg opacity-90 leading-relaxed">책 속에서 즐거움과 위로를 찾는 독자 커뮤니티에 합류하세요. 독서 기록을 관리하고, 새로운 세상을 만나보세요.</p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="flex -space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-primary-container bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">face</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-primary-container bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">mood</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-primary-container bg-secondary flex items-center justify-center text-white font-bold">
+                            +2k
+                        </div>
+</div>
+<p class="font-label-md text-label-md">이번 주에만 2,000명 이상의 독자가 가입했습니다</p>
+</div>
+<div class="absolute bottom-0 right-0 w-full h-1/2 opacity-20 pointer-events-none">
+<div class="absolute bottom-[-50px] right-[-50px] w-64 h-64 border-[32px] border-white rounded-full"></div>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-xl border border-surface-container flex flex-col justify-center">
+<!-- Mobile Branding -->
+<div class="lg:hidden flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary text-3xl">menu_book</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">BookStep</span>
+</div>
+<div class="mb-stack-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">계정 만들기</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">닉네임을 정하고 취향에 맞는 책을 찾아보세요.</p>
+</div>
+<form class="space-y-6" id="registrationForm">
+<!-- Nickname Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block" for="nickname">닉네임</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">alternate_email</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl bg-surface-soft border border-surface-container-highest focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-on-surface placeholder:text-outline-variant" id="nickname" placeholder="예: 책읽는토끼" required="" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block" for="email">이메일 주소</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl bg-surface-soft border border-surface-container-highest focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-on-surface placeholder:text-outline-variant" id="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block" for="password">비밀번호</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-4 rounded-xl bg-surface-soft border border-surface-container-highest focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-on-surface placeholder:text-outline-variant" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="pwToggleIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Interest Genre Selection -->
+<div class="space-y-4 pt-4">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface">관심 장르</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1개 이상 선택</span>
+</div>
+<div class="flex flex-wrap gap-2" id="genreContainer">
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">청소년문학</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">판타지</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">미스터리</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">고전</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">에세이</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">만화</button>
+<button class="genre-chip px-5 py-2.5 rounded-full border border-surface-container-highest bg-surface-soft font-label-md text-label-md text-on-surface-variant transition-all hover:border-warm-orange" onclick="toggleGenre(this)" type="button">SF</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-6">
+<button class="w-full h-14 bg-primary text-on-primary font-headline-md text-headline-md rounded-xl shadow-lg hover:shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                            가입하기
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Login Link -->
+<div class="text-center pt-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            이미 계정이 있으신가요? 
+                            <a class="text-primary font-label-md hover:underline decoration-2 underline-offset-4" href="login.html">로그인</a>
+</p>
+</div>
+</form>
+</div>
+</div>
+</main>
+<div class="hidden" id="completion-modal" role="dialog" aria-modal="true" aria-labelledby="completion-modal-title">
+<div class="modal-panel">
+<div class="modal-icon"><span class="material-symbols-outlined text-[28px]" id="completion-modal-icon">check_circle</span></div>
+<h2 class="modal-title" id="completion-modal-title">완료</h2>
+<p class="modal-message" id="completion-modal-message"></p>
+<button type="button" id="completion-modal-close">확인</button>
+</div>
+</div>
+<script src="../shared/completion-modal.js"></script>
+<script>
+        function toggleGenre(chip) {
+            chip.classList.toggle('active');
+            chip.classList.add('scale-110');
+            setTimeout(() => chip.classList.remove('scale-110'), 150);
+        }
+
+        function togglePassword() {
+            const pwInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('pwToggleIcon');
+            if (pwInput.type === 'password') {
+                pwInput.type = 'text';
+                toggleIcon.innerText = 'visibility_off';
+            } else {
+                pwInput.type = 'password';
+                toggleIcon.innerText = 'visibility';
+            }
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const activeGenres = document.querySelectorAll('.genre-chip.active');
+            if (activeGenres.length < 1) {
+                alert('관심 장르를 1개 이상 선택해 주세요.');
+                return;
+            }
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.style.opacity = '0.8';
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                showCompletionModal('signup');
+            }, 800);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.floating-blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            blobs.forEach((blob, i) => {
+                const speed = (i + 1) * 20;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body></html>

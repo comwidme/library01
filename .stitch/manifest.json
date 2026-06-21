@@ -1,0 +1,48 @@
+{
+  "projectId": "5174082695320147539",
+  "title": "Stepup도서관앱",
+  "deviceType": "MOBILE",
+  "exportedAt": "2026-06-21T18:00:00+09:00",
+  "screens": [
+    {
+      "id": "signup",
+      "title": "회원가입 (국문)",
+      "path": ".stitch/screens/signup.html",
+      "preview": ".stitch/preview/signup.png"
+    },
+    {
+      "id": "login",
+      "title": "로그인 (국문)",
+      "path": ".stitch/screens/login.html"
+    },
+    {
+      "id": "main-home",
+      "title": "메인 홈 (국문)",
+      "path": ".stitch/screens/main-home.html",
+      "preview": ".stitch/preview/main-home.png"
+    },
+    {
+      "id": "book-search",
+      "title": "도서 검색 - 한국어 전용",
+      "path": ".stitch/screens/book-search.html",
+      "preview": ".stitch/preview/book-search.png"
+    },
+    {
+      "id": "book-detail",
+      "title": "도서 상세 - 한국어",
+      "path": ".stitch/screens/book-detail.html",
+      "preview": ".stitch/preview/book-detail.png"
+    },
+    {
+      "id": "bookmark",
+      "title": "북마크 (국문)",
+      "path": ".stitch/screens/bookmark.html",
+      "preview": ".stitch/preview/bookmark.png"
+    },
+    {
+      "id": "bookstep-prd",
+      "title": "BookStep_PRD.md",
+      "path": ".stitch/docs/BookStep_PRD.md"
+    }
+  ]
+}

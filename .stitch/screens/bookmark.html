@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>나의 북마크 - BookStep</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#cfe6f2",
+                    "outline-variant": "#c1c7d3",
+                    "on-tertiary-fixed-variant": "#1a4e50",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#ffb955",
+                    "background": "#f3faff",
+                    "status-loaned": "#E57373",
+                    "on-background": "#071e27",
+                    "primary-fixed": "#d4e3ff",
+                    "inverse-surface": "#1e333c",
+                    "surface-bright": "#f3faff",
+                    "surface-container-low": "#e6f6ff",
+                    "warm-orange": "#F5A623",
+                    "tertiary-container": "#4c7c7f",
+                    "status-available": "#4CAF50",
+                    "outline": "#717783",
+                    "on-secondary-fixed-variant": "#633f00",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#9ecfd1",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-primary-fixed-variant": "#004883",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#b9ecee",
+                    "on-secondary-container": "#6b4500",
+                    "surface-container": "#dbf1fe",
+                    "on-surface-variant": "#414751",
+                    "on-surface": "#071e27",
+                    "inverse-primary": "#a4c9ff",
+                    "primary-container": "#2976c7",
+                    "tertiary": "#336366",
+                    "on-secondary-fixed": "#291800",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-soft": "#F4F7FB",
+                    "on-primary-container": "#fdfcff",
+                    "secondary-container": "#feae2c",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001c39",
+                    "surface-dim": "#c7dde9",
+                    "surface": "#f3faff",
+                    "step-blue": "#4A90E2",
+                    "on-tertiary-fixed": "#002021",
+                    "surface-tint": "#0060ac",
+                    "secondary-fixed": "#ffddb4",
+                    "secondary": "#835500",
+                    "on-tertiary-container": "#f2ffff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#005da7",
+                    "on-primary": "#ffffff",
+                    "background-cream": "#FDFCF0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "stack-md": "1.5rem",
+                    "base": "8px",
+                    "container-padding-desktop": "2.5rem",
+                    "container-padding-mobile": "1.25rem",
+                    "stack-lg": "2.5rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .book-card-hover:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        .empty-state-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-16 w-full sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">BookStep</h1>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="main-home.html">홈</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="book-search.html">검색</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary px-3 py-2" href="bookmark.html">북마크</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="login.html">내 정보</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md text-label-md active:scale-95 duration-150" onclick="location.href='login.html'">로그인</button>
+</header>
+<main class="flex-grow container mx-auto max-w-[1200px] px-container-padding-mobile md:px-container-padding-desktop py-stack-md md:py-stack-lg">
+<!-- Screen Title Section -->
+<div class="mb-stack-md flex flex-col gap-1">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">나의 북마크</h2>
+<p class="text-on-surface-variant font-body-sm text-body-sm">나만의 도서 보관함입니다.</p>
+</div>
+<!-- Bento Grid / Asymmetric Layout for Bookmarks -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bookmarks-list">
+<!-- Bookmark Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm book-card-hover border border-surface-container">
+<div class="flex h-44">
+<div class="w-1/3 h-full relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A warm, inviting book cover for a young adult fantasy novel. The cover features a golden compass floating over a dark blue mystical forest with glowing fireflies. Soft cinematic lighting and vibrant colors create a sense of wonder and adventure, matching the modern minimalist library aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmqbNl1YW8fYS1PE58ztwl939HtAuO0PNAzulfHoybINjYX20QQeRzUDdC8Z4PbCRroEpltWEI-Y980voTmXnH4TnQwt_kykL-nLEOJ3SxxylMJ6M-KmEehMNsx2B8tpw4rtbrFUzFIAYjqWJU2X7Kkys5fp6oTZWBw0Ig2QEYQJrvIp02owug5ZraU8K1TDNB5ZEeFzw8E9Um3YmQUBWqHDa5iHORis6PlUYRWgMrFgF0HUKA9bwOTKFJ0Lo2B8omRwKWCvWY_H4"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">황금 나침반</h3>
+<button class="p-2 -mt-2 -mr-2 hover:bg-error-container text-on-surface-variant hover:text-error transition-colors rounded-full" title="Remove Bookmark">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark_remove" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-2">필립 풀먼</p>
+<span class="bg-status-available/10 text-status-available font-label-sm text-label-sm px-2 py-1 rounded-full border border-status-available/20">대출 가능</span>
+</div>
+<a class="flex items-center gap-2 text-step-blue font-label-md text-label-md hover:underline" href="book-detail.html">
+                            상세보기
+                            <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bookmark Item 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm book-card-hover border border-surface-container">
+<div class="flex h-44">
+<div class="w-1/3 h-full relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An artistic book cover for a science fiction novel depicting a futuristic cityscape under a pastel sunset. Sleek architecture and flying vehicles are rendered in a soft, illustrative style with warm oranges and cool purples. The mood is hopeful and technologically optimistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbkVVjNYzNHe8ahw-5YZrv1Ufh8Skcr0SOlB5vlW9JosEJ7mWUjVusdPaLE6oSKESEBs2j-8PwMCnVqtSvNN2v3namj7YgD4OPgWN6WtJPDv4y1oMQe3kCKM5LxOZL4ZOev_fB3kEgOxAQx9EqIGv-lqVF2x3DtcPi-kxAwWbzsn5p4lCarpFcdZU1sS6Oo_srKxFGGtqCoZf_YwpY5zKMOXerdlm4pu6rC8zPfK-c6OnqVrCGVPpmSeRYxMqYhfO5xbKmiUZ10dg"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">하늘을 향해</h3>
+<button class="p-2 -mt-2 -mr-2 hover:bg-error-container text-on-surface-variant hover:text-error transition-colors rounded-full" title="Remove Bookmark">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark_remove" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-2">아마라 반스</p>
+<span class="bg-status-loaned/10 text-status-loaned font-label-sm text-label-sm px-2 py-1 rounded-full border border-status-loaned/20">대출 중</span>
+</div>
+<a class="flex items-center gap-2 text-step-blue font-label-md text-label-md hover:underline" href="book-detail.html?status=loaned">
+                            상세보기
+                            <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bookmark Item 3 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm book-card-hover border border-surface-container">
+<div class="flex h-44">
+<div class="w-1/3 h-full relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cozy, illustrated book cover for a contemporary mystery novel set in a small bakery. The art style is warm and organic, featuring steaming cups of tea and fresh pastries with soft textures. The color palette uses warm browns, creams, and soft greens to evoke comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDw0bGckZh4RfxZbmh6THD3PTa7tVcU290uaPoT0KyJkHHwOLM-aAC3jNSOPii1AD-b-A4Q7eLB3-OLVtkN_pn7C0AWnm0H1wODKah7jo2B7rfEkdMjzJ08ImoXTZfMJsMjihZUOtCb7v5BLU2CINo0cvdeGHW2rUhVq7bXxgfoH4631e4bLv8iFxyFo37_PT19vl6aj4nPI3IYrVcAnePh4sIETGCJ3juBJxLIplzVFx24fcCr3A9_IAlmweNwMy4uPc8BexDzNA"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">케이크와 단서</h3>
+<button class="p-2 -mt-2 -mr-2 hover:bg-error-container text-on-surface-variant hover:text-error transition-colors rounded-full" title="Remove Bookmark">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark_remove" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-2">엘리너 P. 베이커</p>
+<span class="bg-status-available/10 text-status-available font-label-sm text-label-sm px-2 py-1 rounded-full border border-status-available/20">대출 가능</span>
+</div>
+<a class="flex items-center gap-2 text-step-blue font-label-md text-label-md hover:underline" href="book-detail.html">
+                            상세보기
+                            <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bookmark Item 4 (Mobile/Tablet variant look) -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm book-card-hover border border-surface-container">
+<div class="flex h-44">
+<div class="w-1/3 h-full relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A striking minimalist book cover for a historical fiction novel set in ancient Kyoto. Features a single cherry blossom petal falling onto a textured paper background. Elegant typography and a balanced composition using deep red and ivory tones create a sophisticated, quiet atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdiEoI-qCrENVYeNV5hyso8IsKfo1fOqWX_A06esKAYgH9-T6Z9NazB44urf8L4nBTmtcjwLbxRwSHrliSw483g1DTUq0igWGVQvCsUsiuwXQPuFPGnagSM804mLqXe0hP9xoNmi15u00lW-PdGrReM46rDH0nIronjTjGG8maok2fkjEA-9pCm9crMDZClz41SW4yKWwgZ_BDT1c6PFGRA1ZNbQfmCPRidA1GfH9joZ3ngw6H3i2Xp8CTovvpwk2x_0Jx9F09Vu0"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">장군의 꽃잎</h3>
+<button class="p-2 -mt-2 -mr-2 hover:bg-error-container text-on-surface-variant hover:text-error transition-colors rounded-full" title="Remove Bookmark">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark_remove" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-2">사토 켄지</p>
+<span class="bg-status-available/10 text-status-available font-label-sm text-label-sm px-2 py-1 rounded-full border border-status-available/20">대출 가능</span>
+</div>
+<a class="flex items-center gap-2 text-step-blue font-label-md text-label-md hover:underline" href="book-detail.html">
+                            상세보기
+                            <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown via JS if list is empty) -->
+<div class="hidden flex flex-col items-center justify-center py-20 text-center" id="empty-state">
+<div class="relative w-64 h-64 mb-8 empty-state-animation">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+<span class="material-symbols-outlined text-[120px] text-primary/40" data-icon="auto_stories">auto_stories</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">북마크가 없습니다.</h3>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-sm mb-8">새로운 책을 발견하고 저장하여 독서 목록을 관리해 보세요!</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md flex items-center gap-2 hover:shadow-lg transition-all active:scale-95" onclick="window.location.reload()">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+                새로운 도서 둘러보기
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container dark:bg-surface-container-lowest shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" onclick="location.href='main-home.html'">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" onclick="location.href='book-search.html'">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-md text-label-md">검색</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="font-label-md text-label-md">북마크</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" onclick="location.href='login.html'">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">내 정보</span>
+</button>
+</nav>
+<!-- Simple Script for Interactions -->
+<script>
+        // Removal logic simulation
+        document.querySelectorAll('button[title="Remove Bookmark"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = e.target.closest('.group');
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    card.remove();
+                    checkEmptyState();
+                }, 300);
+            });
+        });
+
+        function checkEmptyState() {
+            const list = document.getElementById('bookmarks-list');
+            const empty = document.getElementById('empty-state');
+            if (list.children.length === 0) {
+                list.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+    </script>
+</body></html>

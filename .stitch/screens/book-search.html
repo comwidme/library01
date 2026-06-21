@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BookStep | 검색 및 둘러보기</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="../shared/completion-modal.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#cfe6f2",
+                        "outline-variant": "#c1c7d3",
+                        "on-tertiary-fixed-variant": "#1a4e50",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#cfe6f2",
+                        "secondary-fixed-dim": "#ffb955",
+                        "background": "#f3faff",
+                        "status-loaned": "#E57373",
+                        "on-background": "#071e27",
+                        "primary-fixed": "#d4e3ff",
+                        "inverse-surface": "#1e333c",
+                        "surface-bright": "#f3faff",
+                        "surface-container-low": "#e6f6ff",
+                        "warm-orange": "#F5A623",
+                        "tertiary-container": "#4c7c7f",
+                        "status-available": "#4CAF50",
+                        "outline": "#717783",
+                        "on-secondary-fixed-variant": "#633f00",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#9ecfd1",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-primary-fixed-variant": "#004883",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#b9ecee",
+                        "on-secondary-container": "#6b4500",
+                        "surface-container": "#dbf1fe",
+                        "on-surface-variant": "#414751",
+                        "on-surface": "#071e27",
+                        "inverse-primary": "#a4c9ff",
+                        "primary-container": "#2976c7",
+                        "tertiary": "#336366",
+                        "on-secondary-fixed": "#291800",
+                        "surface-container-high": "#d5ecf8",
+                        "surface-soft": "#F4F7FB",
+                        "on-primary-container": "#fdfcff",
+                        "secondary-container": "#feae2c",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001c39",
+                        "surface-dim": "#c7dde9",
+                        "surface": "#f3faff",
+                        "step-blue": "#4A90E2",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-tint": "#0060ac",
+                        "secondary-fixed": "#ffddb4",
+                        "secondary": "#835500",
+                        "on-tertiary-container": "#f2ffff",
+                        "inverse-on-surface": "#dff4ff",
+                        "primary": "#005da7",
+                        "on-primary": "#ffffff",
+                        "background-cream": "#FDFCF0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "1rem",
+                        "stack-md": "1.5rem",
+                        "base": "8px",
+                        "container-padding-desktop": "2.5rem",
+                        "container-padding-mobile": "1.25rem",
+                        "stack-lg": "2.5rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .book-card-hover {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+        }
+        .book-card-hover:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center px-container-mobile md:px-container-desktop h-16 w-full sticky top-0 z-50 bg-surface-bright dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]">menu_book</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">BookStep</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="main-home.html">홈</a>
+<a class="text-primary border-b-2 border-primary font-label-md" href="book-search.html">검색</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="bookmark.html">북마크</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="login.html">프로필</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md active:scale-95 duration-150" onclick="location.href='login.html'">로그인</button>
+</div>
+<button class="md:hidden p-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<main class="max-w-[1200px] mx-auto px-container-mobile md:px-container-desktop py-8 mb-24 md:mb-8">
+<!-- Search Header Section -->
+<section class="mb-10">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input autofocus="" class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border-2 border-transparent focus:border-primary focus:ring-0 rounded-2xl shadow-sm text-body-lg font-body-lg placeholder:text-outline-variant transition-all outline-none" placeholder="제목, 저자 또는 장르 검색..." type="text"/>
+</div>
+</section>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filters Sidebar -->
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-8">
+<!-- Genres -->
+<div>
+<h3 class="font-label-md text-label-md text-outline mb-4 uppercase tracking-wider">장르</h3>
+<div class="flex flex-wrap lg:flex-col gap-2">
+<button class="flex items-center justify-between px-4 py-2 bg-primary-container text-on-primary-container rounded-xl font-label-md w-fit lg:w-full transition-colors">
+<span>판타지</span>
+<span class="material-symbols-outlined text-[18px] ml-2 lg:ml-0">check_circle</span>
+</button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-md w-fit lg:w-full transition-colors">
+<span>미스터리</span>
+</button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-md w-fit lg:w-full transition-colors">
+<span>SF</span>
+</button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-md w-fit lg:w-full transition-colors">
+<span>로맨스</span>
+</button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-xl font-label-md w-fit lg:w-full transition-colors">
+<span>비소설</span>
+</button>
+</div>
+</div>
+<!-- Status -->
+<div>
+<h3 class="font-label-md text-label-md text-outline mb-4 uppercase tracking-wider">대출 가능 여부</h3>
+<label class="flex items-center gap-3 cursor-pointer group mb-3">
+<div class="relative w-12 h-6 bg-outline-variant rounded-full group-hover:bg-outline transition-colors p-1 flex items-center">
+<div class="w-4 h-4 bg-white rounded-full transition-transform translate-x-6 bg-step-blue" id="availableToggleKnob"></div>
+<input checked="" class="sr-only" id="availableFilter" type="checkbox"/>
+</div>
+<span class="font-body-md text-on-surface">대출 가능</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-12 h-6 bg-outline-variant rounded-full group-hover:bg-outline transition-colors p-1 flex items-center">
+<div class="w-4 h-4 bg-white rounded-full transition-transform" id="reserveToggleKnob"></div>
+<input class="sr-only" id="reserveFilter" type="checkbox"/>
+</div>
+<span class="font-body-md text-on-surface">예약 가능</span>
+</label>
+</div>
+<!-- Sorting -->
+<div>
+<h3 class="font-label-md text-label-md text-outline mb-4 uppercase tracking-wider">정렬 기준</h3>
+<select class="w-full bg-surface-container border-none rounded-xl font-body-md text-on-surface py-3 px-4 focus:ring-2 focus:ring-primary transition-all">
+<option>인기순</option>
+<option>최신순</option>
+<option>제목 (ㄱ-ㅎ)</option>
+<option>제목 (ㅎ-ㄱ)</option>
+</select>
+</div>
+</div>
+</aside>
+<!-- Results Section -->
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-6">
+<p class="font-body-sm text-on-surface-variant">'<span class="font-bold text-on-surface">판타지</span>' 장르의 도서 12권</p>
+<button class="lg:hidden flex items-center gap-2 text-primary font-label-md">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                        필터
+                    </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" id="results-grid">
+<!-- Book Card 1 -->
+<div class="book-card-hover bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm flex flex-col group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A cinematic, high-fantasy book cover illustration featuring a glowing ancient forest at twilight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDojiLgEbxGntlEElTHhW8nyqx5tc38YYnGey_188ubh51SzDxGRucRnwz6LpOdSpH53S2LD9X_GwzP1XBTOp6pOAZsSoIpfuhMOaFOW3q3tDyBv0pqJtLxFXPxlBqoqVnuM4aGCqOzwSqbJkTUvoM74kRLARKwwhwJzUWoUtJD0VzRchS1GYbHQqC7dWLuwRBjlIVZLrqw359ALE-dEPuICDDSLsxMkLxk9_oDnROSEh71CYYyVJPOWUOLlL4gEdKlRdsA9OneBmk')">
+</div>
+<span class="absolute top-3 right-3 bg-status-available text-white text-[10px] font-bold px-2 py-1 rounded-lg uppercase tracking-widest shadow-md">대출 가능</span>
+</div>
+<div class="p-5 flex-grow flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1">은빛 속삭임</h4>
+<button aria-label="북마크 추가" class="text-outline-variant hover:text-warm-orange transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-4">저자: 엘레나 손</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm text-primary font-label-sm">판타지</span>
+<button aria-label="대출 신청" class="bg-step-blue hover:bg-primary text-white px-3 py-2 rounded-xl transition-all shadow-sm active:scale-90 text-label-sm font-label-sm flex items-center gap-1" onclick="showCompletionModal('loan')">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+                                대출
+                            </button>
+</div>
+</div>
+</div>
+<!-- Book Card 2 -->
+<div class="book-card-hover bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm flex flex-col group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist book cover featuring a stylized, geometric representation of a futuristic city." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9d-wFZnVBlTtGLzPwgbO2AYraL8sSCRbKOqLPGdGxw_qYyYNttBl-RHgMn3tpuZafHKRZmNYRIxVmIDUFNFLcwfnbjSjltR-U789K5RepwcaCul8kxF6Y3VW5AjMD1nB-ZAZ_WsYymQm-0dNYgborhuJ0sVbX8nLv37mlhbeAP2GyT9xYolXzTDtLzqTMSaLh_5_WhMx-LvZvpEngLXtHC-nKSclYRR1D2QmTsZ_9QDUn8km4WNUxQSiP9SRycgF8eS2xCcN4oUk')">
+</div>
+<span class="absolute top-3 right-3 bg-status-loaned text-white text-[10px] font-bold px-2 py-1 rounded-lg uppercase tracking-widest shadow-md">대출 중</span>
+</div>
+<div class="p-5 flex-grow flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1">네온 호라이즌</h4>
+<button aria-label="북마크 제거" class="text-outline-variant hover:text-warm-orange transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-4">저자: 마커스 K. 베인</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm text-primary font-label-sm">SF</span>
+<button aria-label="예약 신청" class="bg-warm-orange hover:opacity-90 text-white px-3 py-2 rounded-xl transition-all shadow-sm active:scale-90 text-label-sm font-label-sm flex items-center gap-1" onclick="showCompletionModal('reserve')">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+                                예약
+                            </button>
+</div>
+</div>
+</div>
+<!-- Book Card 3 -->
+<div class="book-card-hover bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm flex flex-col group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A cozy and atmospheric book cover depicting a quaint bookstore." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3oO8iftlj2giFWaTVKMy9x-XUAJqfHfgACwspj_J5Mbih1Qs0vKiYlGiZ4Mtz9sDodKq7yjbNuxBI-hrT887V_6x5pS82s0EJYmG4MOiZiC4Ox8IrgjNPaSIGLdmngicW1aKtPrJo9KJ304fYRshANfh5yNz7PZnh6oQxjIw0-z2g3Gzi7SQjgyM6WmjLjASdP5WHpEYUVJjXHULgvqyjxb6F_Pedr5ZsmuLshLH3eOtuD1M2EDly6x6000GTC7Z3ux-KGhzvbeg')">
+</div>
+<span class="absolute top-3 right-3 bg-status-available text-white text-[10px] font-bold px-2 py-1 rounded-lg uppercase tracking-widest shadow-md">대출 가능</span>
+</div>
+<div class="p-5 flex-grow flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1">한밤중의 상점</h4>
+<button aria-label="북마크 추가" class="text-outline-variant hover:text-warm-orange transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-4">저자: 클라라 펜할리곤</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm text-primary font-label-sm">미스터리</span>
+<button aria-label="대출 신청" class="bg-step-blue hover:bg-primary text-white px-3 py-2 rounded-xl transition-all shadow-sm active:scale-90 text-label-sm font-label-sm flex items-center gap-1" onclick="showCompletionModal('loan')">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+                                대출
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State -->
+<div class="hidden flex-col items-center justify-center py-24 text-center" id="empty-state">
+<div class="w-48 h-48 mb-8 relative">
+<div class="absolute inset-0 bg-primary/5 rounded-full animate-pulse"></div>
+<span class="material-symbols-outlined text-[96px] text-primary/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">search_off</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">검색 결과가 없습니다</h2>
+<p class="font-body-md text-on-surface-variant max-w-sm mb-8">
+                        검색어와 일치하는 도서를 찾을 수 없습니다. 필터를 조정하거나 다른 키워드로 검색해 보세요.
+                    </p>
+<div class="flex flex-wrap justify-center gap-3">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md hover:shadow-lg transition-all active:scale-95">모든 필터 초기화</button>
+<button class="bg-surface-container-high text-primary px-6 py-2 rounded-full font-label-md hover:bg-surface-container-highest transition-all">"판타지" 추천</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container dark:bg-surface-container-lowest rounded-t-xl shadow-lg border-t border-surface-container-high/50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-md" href="main-home.html">
+<span class="material-symbols-outlined">home</span>
+<span class="mt-1">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 font-label-md" href="book-search.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="mt-1">검색</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-md" href="bookmark.html">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="mt-1">북마크</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-md" href="login.html">
+<span class="material-symbols-outlined">person</span>
+<span class="mt-1">프로필</span>
+</a>
+</nav>
+<div class="hidden" id="completion-modal" role="dialog" aria-modal="true" aria-labelledby="completion-modal-title">
+<div class="modal-panel">
+<div class="modal-icon"><span class="material-symbols-outlined text-[28px]" id="completion-modal-icon">check_circle</span></div>
+<h2 class="modal-title" id="completion-modal-title">완료</h2>
+<p class="modal-message" id="completion-modal-message"></p>
+<button type="button" id="completion-modal-close">확인</button>
+</div>
+</div>
+<script src="../shared/completion-modal.js"></script>
+<script>
+        // Micro-interaction: Filter toggle
+        const filterButtons = document.querySelectorAll('aside button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.querySelector('span:last-child').classList.contains('material-symbols-outlined')) {
+                    // Logic to toggle active state visually
+                    this.classList.toggle('bg-primary-container');
+                    this.classList.toggle('text-on-primary-container');
+                    this.classList.toggle('bg-surface-container');
+                    this.classList.toggle('text-on-surface-variant');
+                }
+            });
+        });
+
+        const availableFilter = document.getElementById('availableFilter');
+        const reserveFilter = document.getElementById('reserveFilter');
+        const availableKnob = document.getElementById('availableToggleKnob');
+        const reserveKnob = document.getElementById('reserveToggleKnob');
+
+        const syncFilterKnobs = () => {
+            availableKnob.classList.toggle('translate-x-6', availableFilter.checked);
+            availableKnob.classList.toggle('bg-step-blue', availableFilter.checked);
+            reserveKnob.classList.toggle('translate-x-6', reserveFilter.checked);
+            reserveKnob.classList.toggle('bg-warm-orange', reserveFilter.checked);
+        };
+
+        availableFilter.addEventListener('change', syncFilterKnobs);
+        reserveFilter.addEventListener('change', syncFilterKnobs);
+        syncFilterKnobs();
+
+        // Search Input simulation (for demonstration of empty state)
+        const searchInput = document.querySelector('input[type="text"]');
+        const resultsGrid = document.getElementById('results-grid');
+        const emptyState = document.getElementById('empty-state');
+
+        searchInput.addEventListener('input', (e) => {
+            if (e.target.value.toLowerCase() === 'empty' || e.target.value === '없음') {
+                resultsGrid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            } else {
+                resultsGrid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                emptyState.classList.remove('flex');
+            }
+        });
+    </script>
+</body></html>
